@@ -96,10 +96,6 @@ body {
     font-size: 3em;
 }
 
-footer {
-    background-color: #f8f9fa;
-}
-
 .card {
     /* Set all cards to be the same height */
     height: 100%; /* Ensures card takes full height */
