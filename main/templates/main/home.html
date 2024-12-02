@@ -53,11 +53,17 @@
                         <button class="btn dropdown-toggle btn-login-signup" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                            <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="{% url 'already_logged_in' %}">You are logged in as {{ user.username }}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                                <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                            {% endif %}
                         </ul>
                     </div>
+                    
                 </li>
             </ul>
         </div>
