@@ -32,12 +32,12 @@
                             Categories
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#Fiction">Fiction</a></li>
-                            <li><a class="dropdown-item" href="#Kids">Kids</a></li>
-                            <li><a class="dropdown-item" href="#Horror">Horror</a></li>
-                            <li><a class="dropdown-item" href="#Sports">Sports</a></li>
-                            <li><a class="dropdown-item" href="#Biography">Biography</a></li>
-                            <li><a class="dropdown-item" href="#Tales">Tales</a></li>
+                            <li><a class="dropdown-item" href="/category/Fiction">Fiction</a></li>
+                            <li><a class="dropdown-item" href="/category/Kids">Kids</a></li>
+                            <li><a class="dropdown-item" href="/category/Horror">Horror</a></li>
+                            <li><a class="dropdown-item" href="/category/Sports">Sports</a></li>
+                            <li><a class="dropdown-item" href="/category/Biography">Biography</a></li>
+                            <li><a class="dropdown-item" href="/category/Tales">Tales</a></li>
                         </ul>
                     </div>
                 </li>
@@ -89,7 +89,7 @@
                         <h5 class="card-title">Fiction</h5>
                         <p class="card-text">Explore a wide variety of fiction books.</p>
                     </div>
-                    <a href="#fiction" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Fiction' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -99,7 +99,7 @@
                         <h5 class="card-title">Kids</h5>
                         <p class="card-text">Dive into the world of kids books.</p>
                     </div>
-                    <a href="#kids" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Kids' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -109,7 +109,7 @@
                         <h5 class="card-title">Horror</h5>
                         <p class="card-text">Find your favorite horror books here.</p>
                     </div>
-                    <a href="#horror" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Horror' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
             <!-- Bottom Row -->
@@ -120,7 +120,7 @@
                         <h5 class="card-title">Sports</h5>
                         <p class="card-text">Find sports books here.</p>
                     </div>
-                    <a href="#sports" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Sports' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -130,7 +130,7 @@
                         <h5 class="card-title">Biography</h5>
                         <p class="card-text">Find biography books here.</p>
                     </div>
-                    <a href="#biography" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Biography' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -140,7 +140,7 @@
                         <h5 class="card-title">Tales</h5>
                         <p class="card-text">Find original tales books here.</p>
                     </div>
-                    <a href="#tales" class="btn btn-primary category-btn">Explore</a>
+                    <a href="{% url 'category_books' 'Tales' %}" class="btn btn-primary category-btn">Explore</a>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
     <!-- Footer -->
     <footer class="bg-warning py-3" id="footer">
         <div class="container">
-            <p class="text-center mb-0">© 2024 Bookstore | All Rights Reserved</p>
+            <p class="text-center mb-0">2024 Bookstore | All Rights Reserved</p>
         </div>
     </footer>
 

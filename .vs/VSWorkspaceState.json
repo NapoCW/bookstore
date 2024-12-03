@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bookstore",
+    "\\main",
+    "\\main\\templates",
+    "\\main\\templates\\main",
+    "\\search",
+    "\\search\\templates",
+    "\\search\\templates\\search",
+    "\\static\\images"
+  ],
+  "SelectedNode": "\\search\\templates\\search\\search.html",
+  "PreviewInSolutionExplorer": false
+}
