@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap JS (with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <a class="navbar-brand" href="{% url 'home' %}">Bookstore</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle bg-warning" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/category/Fiction">Fiction</a></li>
+                            <li><a class="dropdown-item" href="/category/Kids">Kids</a></li>
+                            <li><a class="dropdown-item" href="/category/Horror">Horror</a></li>
+                            <li><a class="dropdown-item" href="/category/Sports">Sports</a></li>
+                            <li><a class="dropdown-item" href="/category/Biography">Biography</a></li>
+                            <li><a class="dropdown-item" href="/category/Tales">Tales</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search_books' %}">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart_view' %}"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </li>
+                <!-- Update the Login/Signup button -->
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle btn-login-signup" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="{% url 'already_logged_in' %}">You are logged in as {{ user.username }}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                                <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Cart Section -->
+    <div class="container my-5">
+        <h2>Your Cart</h2>
+        <div class="row">
+            <!-- Left: List of books -->
+            <div class="col-md-8">
+                {% if cart_items %}
+                    <ul class="list-group">
+                        {% for item in cart_items %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                 <span>{{ item.book.title }}</span>  <!-- Display the book title -->
+                                 <span>{{ item.quantity }} x</span>  <!-- Display quantity -->
+                                 <span>${{ item.total_price }}</span>  <!-- Display total price for this item -->
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Your cart is empty!</p>
+                {% endif %}
+            </div>
+
+            <!-- Right: Total Price and Buy Button -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Price</h5>
+                        <p class="card-text"><strong>${{ total_price }}</strong></p>
+                        <a href="{% url 'order_complete' %}" class="btn btn-primary w-100">Buy</a>
+                        {% if cart_items %}
+                            {% if order_complete %}
+                                <div class="alert alert-success mt-3">
+                                    Order Complete!
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendations Section -->
+    <div class="container my-5">
+        <h3>Recommended Books</h3>
+        <div class="row justify-content-start">
+            {% for book in recommendations %}
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Author: {{ book.author }}</p>
+                        <p class="card-text">Category: {{ book.category }}</p>
+                        <p class="card-text">Price: €{{ book.price }}</p>
+                        <a href="{% url 'add_to_cart' book.id %}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-warning py-3" id="footer">
+        <div class="container">
+            <p class="text-center mb-0">2024 Bookstore | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
