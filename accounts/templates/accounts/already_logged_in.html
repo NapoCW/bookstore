@@ -27,13 +27,25 @@
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#categories">Categories</a>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle bg-warning" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/category/Fiction">Fiction</a></li>
+                            <li><a class="dropdown-item" href="/category/Kids">Kids</a></li>
+                            <li><a class="dropdown-item" href="/category/Horror">Horror</a></li>
+                            <li><a class="dropdown-item" href="/category/Sports">Sports</a></li>
+                            <li><a class="dropdown-item" href="/category/Biography">Biography</a></li>
+                            <li><a class="dropdown-item" href="/category/Tales">Tales</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'search_books' %}">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    <a class="nav-link" href="{% url 'cart_view' %}"><i class="fas fa-shopping-cart"></i> Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="{% url 'logout' %}">Logout</a>

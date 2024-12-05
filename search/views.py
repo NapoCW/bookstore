@@ -1,6 +1,6 @@
 # views.py
 from django.shortcuts import render
-from .models import Book  # Import Book model from the 'books' app
+from main.models import Book  # Import Book model
 
 def search_books(request):
     query = request.GET.get('q', '')  # Get the search query from the URL

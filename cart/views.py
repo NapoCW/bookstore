@@ -17,11 +17,29 @@ def add_to_cart(request, book_id):
     return redirect('cart_view')  # Redirect back to the cart page
 
 
-
-
 @login_required
 def cart_view(request):
-    cart = Cart.objects.get(user=request.user)
+    cart = Cart.objects.filter(user=request.user).first()  # Get the user's active cart
+    
+    if cart:
+        # Fetch cart items
+        cart_items = CartItem.objects.filter(cart=cart)
+        for item in cart_items:
+            item.total_price = item.book.price * item.quantity  # Compute total price for each item
+        
+        # Calculate total cart price
+        total_cart_price = sum(item.total_price for item in cart_items)
+
+        # Fetch recommended books
+        # Get categories of books in the cart
+        cart_categories = set(item.book.category for item in cart_items)
+        # Fetch other books from the same categories, excluding those already in the cart
+        recommendations = Book.objects.filter(category__in=cart_categories).exclude(id__in=[item.book.id for item in cart_items])[:2]
+
+        return render(request, 'cart/cart.html', {'cart_items': cart_items,'total_price': total_cart_price,'recommendations': recommendations})
+    else:
+        return render(request, 'cart/cart.html', {'cart_items': [],'total_price': 0,'recommendations': []})
+
     cart_items = CartItem.objects.filter(cart=cart)
 
     for item in cart_items:
@@ -42,7 +60,6 @@ def cart_view(request):
         'total_cart_price': total_cart_price,
         'recommendations': recommendations,  # Pass recommendations to the template
     })
-
 
 @login_required
 def clear_cart(request):

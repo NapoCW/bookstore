@@ -69,11 +69,12 @@
     </nav>
 
     <!-- Search Section -->
-    <section class="search">
+    <section class="container my-5">
+        <h2>Search Books</h2>
            <!-- Search Form -->
         <div class="container mt-5">
             <form method="get" action="{% url 'search_books' %}">
-                <input type="text" name="q" class="form-control" placeholder="Search for books..." value="{{ query }}">
+                <input type="text" name="q" class="form-control" placeholder="Search for books by title or author..." value="{{ query }}">
                 <button type="submit" class="btn btn-primary mt-2">Search</button>
             </form>
         </div>
@@ -93,6 +94,10 @@
                                         <p class="card-text"><strong>{{ book.author }}</strong></p>
                                         <p class="card-text">{{ book.description }}</p>
                                         <p class="card-text"><strong>Price: ${{ book.price }}</strong></p>
+                                        <form action="{% url 'add_to_cart' book.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

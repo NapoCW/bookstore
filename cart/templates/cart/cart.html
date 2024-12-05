@@ -110,6 +110,7 @@
 
     <!-- Recommendations Section -->
     <div class="container my-5">
+        {% if cart_items%}
         <h3>Recommended Books</h3>
         <div class="row justify-content-start">
             {% for book in recommendations %}
@@ -126,6 +127,7 @@
                 </div>
             </div>
             {% endfor %}
+        {% endif %}
         </div>
     </div>
 
