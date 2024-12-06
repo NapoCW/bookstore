@@ -20,9 +20,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link bg-danger" href="{% url 'custom_admin' %}">Admin</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle bg-warning" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/category/Fiction">Fiction</a></li>
+                            <li><a class="dropdown-item" href="/category/Kids">Kids</a></li>
+                            <li><a class="dropdown-item" href="/category/Horror">Horror</a></li>
+                            <li><a class="dropdown-item" href="/category/Sports">Sports</a></li>
+                            <li><a class="dropdown-item" href="/category/Biography">Biography</a></li>
+                            <li><a class="dropdown-item" href="/category/Tales">Tales</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'search_books' %}">Search</a></li>
-                <li class="nav-item"><a class="nav-link" href="#Cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cart_view' %}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <li class="nav-item">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle btn-login-signup" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,14 +65,14 @@
         </div>
     </nav>
 
-    <!-- Signup Section -->
+    <!-- Signup -->
     <section class="container my-5">
         <h2 class="text-center mb-4">Sign Up</h2>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}  <!-- Render the form fields -->
+                    {{ form.as_p }}
                     <button type="submit" class="btn btn-primary w-100">Sign Up</button>
                 </form>
                 {% if form.errors %}
@@ -72,7 +94,7 @@
     <!-- Footer -->
     <footer class="bg-warning py-3">
         <div class="container">
-            <p class="text-center mb-0">© 2024 Bookstore | All Rights Reserved</p>
+            <p class="text-center mb-0">2024 Bookstore | All Rights Reserved</p>
         </div>
     </footer>
 

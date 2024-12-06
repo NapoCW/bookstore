@@ -23,6 +23,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link bg-danger" href="{% url 'custom_admin' %}">Admin</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
@@ -112,7 +119,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-warning py-3">
+    <footer class="footer mt-auto bg-warning py-3">
         <div class="container">
             <p class="text-center mb-0">2024 Bookstore | All Rights Reserved</p>
         </div>

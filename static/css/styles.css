@@ -1,14 +1,13 @@
-/* styles.css */
 body {
     font-family: 'Agency FB', sans-serif;
 }
 .navbar .nav-link {
-    font-size: 1.2em; /* Adjust the value as needed */
-    font-weight: bold; /* make the text bold */
+    font-size: 1.2em; 
+    font-weight: bold; 
 }
 
 .navbar-brand {
-    font-size: 1.5em; /* Make the brand text larger */
+    font-size: 1.5em;
     font-weight: bold;
     padding-left: 10px;
 }
@@ -19,26 +18,26 @@ body {
 }
 
 .nav-link {
-    color: black; /* Default text color for all links */
-    background-color: transparent; /* No background color by default */
-    transition: background-color 0.3s ease; /* Smooth background transition */
+    color: black; 
+    background-color: transparent; 
+    transition: background-color 0.3s ease; 
 }
 
 
 .navbar .nav-item .nav-link {
-    border-radius: 25px; /* Adjust the radius to make the button more rounded */
-    padding: 8px 20px; /* Adjust padding to make the button more proportional */
+    border-radius: 25px; 
+    padding: 8px 20px;
 }
 
 
 .dropdown-menu .dropdown-item {
-    font-size: 1.2em; /* Match the size with the navbar links */
-    font-weight: bold; /* make the text bold */
-    color: black; /* Ensure consistent color */
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: black;
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #fbff00; /* Add hover effect */
+    background-color: rgb(255,193,7);
 
 }
 
@@ -56,26 +55,25 @@ body {
     border:none;
 }
 
-/* Custom blue color for Login/Signup button */
 .btn-login-signup {
-    background-color: #007bff; /* Blue color */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    border-radius: 25px; /* Rounded corners */
-    padding: 8px 20px; /* Adjust padding to fit */
+    background-color: #007bff; 
+    color: white;
+    border: none; 
+    border-radius: 25px;
+    padding: 8px 20px;
 }
 
 .btn-login-signup:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     color: white;
-    text-decoration: none; /* Remove underline on hover */
+    text-decoration: none;
 }
 
 .fas{
     color:black;
 }
 .hero {
-    height: 60vh; /* Adjust as needed for desired hero height */
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,7 +82,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white; /* Ensure text stands out */
+    color: white;
 }
 
 .hero-text {
@@ -98,35 +96,44 @@ body {
 }
 
 .card {
-    /* Set all cards to be the same height */
-    height: 100%; /* Ensures card takes full height */
+    height: 100%; 
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover movement */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
-/* Card Hover Effect - Lift and Shadow */
+/* Card Hover Effect*/
 .card:hover {
-    transform: translateY(-10px); /* Moves the card up by 10px */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Adds a shadow to the card when hovered */
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 /* Card Image */
 .card-img-top {
-    height: 200px; /* Set consistent height for the image */
-    object-fit: cover; /* Ensures the image covers the space without stretching */
+    height: 200px; 
+    object-fit: cover;
 }
 
-/* Category Button */
+.card-footer{
+    background-color:rgb(255,193,7);
+}
+
+.btn-outline{
+    background-color:#007bff;
+}
+.btn-outline:hover{
+    background-color:#5cb85c;
+}
+
 .category-btn {
     position: absolute;
-    bottom: 160px; /* Adjust position from the bottom */
+    bottom: 160px;
     left: 50%;
-    transform: translateX(-50%); /* Centers the button horizontally */
+    transform: translateX(-50%); 
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    z-index: 1; /* Ensures button stays on top */
+    z-index: 1;
     font-size: 26px;
 }
 
@@ -138,14 +145,13 @@ body {
     font-weight: bold;
 }
 .card:hover .category-btn {
-    opacity: 1; /* Button becomes visible on hover */
+    opacity: 1;
 }
 
 .card-body {
     background-color: #ffffff;
 }
 
-/* Ensures a smooth layout for the row and columns */
 .row {
     display: flex;
     flex-wrap: wrap;
