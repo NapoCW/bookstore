@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem
 from main.models import Book
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required
 def add_to_cart(request, book_id):
@@ -14,7 +15,8 @@ def add_to_cart(request, book_id):
         # If the book is already in the cart, increase the quantity
         cart_item.quantity += 1
         cart_item.save()
-    return redirect('cart_view')  # Redirect back to the cart page
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 @login_required
@@ -34,7 +36,7 @@ def cart_view(request):
         # Get categories of books in the cart
         cart_categories = set(item.book.category for item in cart_items)
         # Fetch other books from the same categories, excluding those already in the cart
-        recommendations = Book.objects.filter(category__in=cart_categories).exclude(id__in=[item.book.id for item in cart_items])[:2]
+        recommendations = Book.objects.filter(category__in=cart_categories).exclude(id__in=[item.book.id for item in cart_items])
 
         return render(request, 'cart/cart.html', {'cart_items': cart_items,'total_price': total_cart_price,'recommendations': recommendations})
     else:
@@ -53,7 +55,7 @@ def cart_view(request):
     # Fetch recommended books from the same category
     recommendations = Book.objects.filter(category__in=cart_book_categories).exclude(
         id__in=[item.book.id for item in cart_items]  # Exclude books already in the cart
-    ).distinct()[:5]  # Limit to 5 recommendations for simplicity
+    ).distinct()
 
     return render(request, 'cart/cart.html', {
         'cart_items': cart_items,
@@ -78,3 +80,14 @@ def order_complete(request):
     cart_items.delete()
 
     return render(request, 'cart/order_complete.html')  # Redirect to the order complete page
+
+@login_required
+def change_quantity(request, book_id, new_quantity):
+    cart = Cart.objects.get(user=request.user)  # Get the user's cart
+    cart_item = get_object_or_404(CartItem, cart=cart, book__id=book_id)  # Get the specific cart item
+    if new_quantity <= 0:
+        cart_item.delete()  # If the quantity is less than or equal to 0, remove the item from the cart
+    else:
+        cart_item.quantity = new_quantity  # Otherwise, update the quantity
+        cart_item.save()  # Save the changes
+    return redirect(request.META.get('HTTP_REFERER', '/'))  # Redirect back to the same page

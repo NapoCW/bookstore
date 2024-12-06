@@ -55,3 +55,29 @@ def already_logged_in_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')  # Redirect to the home page after logout
+
+@login_required
+def view_personal_info(request):
+    user = request.user
+    return render(request, 'accounts/view_personal_info.html', {'user': user})
+
+@login_required
+def edit_personal_info(request):
+    user = request.user
+    if request.method == 'POST':
+        # Handle the email update
+        user.username = request.POST.get('username')
+        
+        # Handle password change
+        new_password = request.POST.get('password')
+        if new_password:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, 'Your information has been updated successfully.')
+            return redirect('view_personal_info')
+
+        user.save()
+        messages.success(request, 'Your information has been updated successfully.')
+        return redirect('view_personal_info')
+    
+    return render(request, 'accounts/edit_personal_info.html', {'user': user})
