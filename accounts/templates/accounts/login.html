@@ -26,6 +26,11 @@
                             <a class="nav-link bg-danger" href="{% url 'custom_admin' %}">Admin</a>
                         </li>
                     {% endif %}
+                    {% if user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{% url 'custom_power' %}">Staff</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                 <li class="nav-item">
@@ -73,12 +78,12 @@
                 <form method="POST" action="{% url 'login' %}">
                     {% csrf_token %}
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" class="form-control" style="width: 300px;" required>
+                    <input type="text" id="username" name="username" class="form-control" required>
                     
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" class="form-control" style="width: 300px;" required>
+                    <input type="password" id="password" name="password" class="form-control" required>
                     
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary mt-4">Login</button>
                 </form>
                 {% if messages %}
                     <div class="alert alert-danger mt-3">

@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import Book, Category, Comment
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -58,3 +58,18 @@ def custom_admin(request):
         'users': users,
     }
     return render(request, 'main/custom_admin.html', context)
+
+@login_required
+def custom_power(request):
+    if not request.user.is_staff:
+        messages.error(request, "You are not authorized to access this page.")
+        return redirect('home')
+
+    books = Book.objects.all()
+    categories = Category.objects.all()
+    context = {
+        'books': books,
+        'categories': categories,
+
+    }
+    return render(request, 'main/custom_power.html', context)

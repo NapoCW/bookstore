@@ -32,6 +32,11 @@
                             <a class="nav-link bg-danger" href="{% url 'custom_admin' %}">Admin</a>
                         </li>
                     {% endif %}
+                    {% if user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" href="{% url 'custom_power' %}">Staff</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
                 <li class="nav-item ">
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
@@ -80,7 +85,7 @@
     
     <section class="container my-5">
         <h2>{{ category.name }} Books</h2>
-        <div class="row">
+        <div class="row justify-content-start">
             {% for book in books %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -110,7 +115,7 @@
                                         {% if comment.user == user %}
                                             <form action="{% url 'delete_comment' comment.id %}" method="POST" class="d-inline">
                                                 {% csrf_token %}
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete comment</button>
+                                                <button type="submit" class="btn btn-danger btn-sm delete-btn">Delete comment</button>
                                             </form>
                                         {% endif %}
                                     {% endfor %}
