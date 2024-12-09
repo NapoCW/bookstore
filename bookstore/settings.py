@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,8 +36,6 @@ INSTALLED_APPS = [
     'search',
     'accounts',
     'cart',
-    'cloudinary',
-    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,20 +127,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGOUT_REDIRECT_URL = 'home'
 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Cloudinary configuration
-cloudinary.config(
-    cloud_name="djmckdp1k", 
-    api_key="777111939457257",
-    api_secret="qyE0ldQS--LMuUmd_58K-mlNEYU",
-)
-
-# Use Cloudinary for storing media files
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Media URL settings
-MEDIA_URL = 'https://res.cloudinary.com/djmckdp1k/image/upload/'  # Replace with your cloud name
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
