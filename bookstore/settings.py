@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'search',
     'accounts',
     'cart',
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
