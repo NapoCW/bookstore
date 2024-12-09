@@ -143,7 +143,7 @@ cloudinary.config(
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Media URL settings
-MEDIA_URL = 'https://res.cloudinary.com/your-cloud-name/image/upload/'  # Replace with your cloud name
+MEDIA_URL = 'https://res.cloudinary.com/djmckdp1k/image/upload/'  # Replace with your cloud name
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
