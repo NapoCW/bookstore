@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','django-insecure-lk=egau#8uogvkg!!_4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -74,11 +74,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bookstore.wsgi.application'
+WSGI_APPLICATION = 'bookstore-varelas.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# 
 
 DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost')
