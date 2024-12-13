@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bookstore-varelas.wsgi.application'
+WSGI_APPLICATION = 'bookstore.wsgi.application'
 
 
 # Database
