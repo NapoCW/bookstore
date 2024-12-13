@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 # 
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
+    'default': dj_database_url.config(default='postgres://u2fakbt5qvgdcv:peee9c15b6be0ca8eb209e0509af96d158c2e5a46aee9a30805ecfbbcfd17d9a3@ccaml3dimis7eh.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d180glr56jro6b')
 }
 
 
