@@ -1,0 +1,182 @@
+body {
+    font-family: 'Agency FB', sans-serif;
+}
+.navbar .nav-link {
+    font-size: 1.2em; 
+    font-weight: bold; 
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+
+.navbar-nav{
+    padding-right: 10px;
+}
+
+.nav-link {
+    color: black; 
+    background-color: transparent; 
+    transition: background-color 0.3s ease; 
+}
+
+
+.navbar .nav-item .nav-link {
+    border-radius: 25px; 
+    padding: 8px 20px;
+}
+
+
+.dropdown-menu .dropdown-item {
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: black;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: rgb(255,193,7);
+
+}
+
+#dropdownMenuButton{
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    padding-top: 8px;
+}
+
+
+.btn-primary {
+    background-color: rgb(255,193,7);
+    color: black;
+    border:none;
+}
+
+.btn-login-signup {
+    background-color: #007bff; 
+    color: white;
+    border: none; 
+    border-radius: 25px;
+    padding: 8px 20px;
+}
+
+.btn-login-signup:hover {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+}
+
+.fas{
+    color:black;
+}
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.hero-text {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.hero h1 {
+    font-size: 3em;
+}
+
+.card {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+/* Card Hover Effect*/
+.card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+/* Card Image */
+.card-img-top {
+    height: 200px; 
+    object-fit: cover;
+}
+
+.card-footer{
+    background-color:rgb(255,193,7);
+}
+
+.btn-outline{
+    background-color:#007bff;
+}
+.btn-outline:hover{
+    background-color:#5cb85c;
+}
+
+.category-btn {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%); 
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    font-size: 26px;
+}
+
+#categories{
+    font-weight: bold;
+}
+
+.card-title{
+    font-weight: bold;
+}
+.card:hover .category-btn {
+    opacity: 1;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-md-4 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.search {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-btn:hover{
+    background-color: rgb(100, 8, 8);
+    border: none;
+}
