@@ -64,13 +64,14 @@ def order_complete(request):
     return render(request, 'cart/order_complete.html') 
 @login_required
 def change_quantity(request, book_id, new_quantity):
-    cart = Cart.objects.get(user=request.user) 
-    cart_item = get_object_or_404(CartItem, cart=cart, book__id=book_id)  
+    cart = Cart.objects.get(user=request.user)  
+    cart_item = get_object_or_404(CartItem, cart=cart, book__id=book_id)
     if new_quantity <= 0:
         cart_item.delete()
-        cart_item.quantity = new_quantity 
-        cart_item.save()  
-    return redirect(request.META.get('HTTP_REFERER', '/'))  
+    else:
+        cart_item.quantity = new_quantity
+        cart_item.save()
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 def checkout(request):
     return render(request, 'cart/checkout.html')
