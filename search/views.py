@@ -1,12 +1,10 @@
-# views.py
 from django.shortcuts import render
-from main.models import Book  # Import Book model
+from main.models import Book
 
 def search_books(request):
-    query = request.GET.get('q', '')  # Get the search query from the URL
+    query = request.GET.get('q', '')
     books = Book.objects.none()
     if query:
-        # Search for books that contain the query in their title or author
         books = Book.objects.filter(title__icontains=query) | Book.objects.filter(author__icontains=query)
     else:
         books = Book.objects.all()
